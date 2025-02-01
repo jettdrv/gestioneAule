@@ -93,6 +93,6 @@ public class Prenotazione {
 	public String toString() {
 		return ("Dettagli prenotazione:  \n\t data->" + data + "\n \t oraInizio-> "
 				+ ""+ oraInizio + "\n\t oraFine-> " +oraFine+ "\n\t NomePrenotatore-> "
-				+ nomePrenotatore+"\n\t MOtivazione-> "+ motivazione + "\n\t aula-> "+ aula.getNumeroAula());
+				+ nomePrenotatore+"\n\t Motivazione-> "+ motivazione + "\n\t aula-> "+ aula.getNumeroAula());
 	}
 }

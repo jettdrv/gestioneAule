@@ -23,11 +23,22 @@ public class Laboratorio extends Aula {
 	 * @param haPreseElettriche
 	 */
 	
-	public Laboratorio(String numeroAula, int capienza, String tipoAula, boolean haPc, boolean haPreseElettriche){
+	public Laboratorio(String numeroAula, int capienza, boolean haPc, boolean haPreseElettriche){
 		super(numeroAula, capienza, "Laboratorio");
 		
 		this.haPc = haPc;
 		this.haPreseElettriche = haPreseElettriche;
+	}
+	
+	/**
+	 * Metodo ereditato dalla classe Aula, che viene sovrascritto per 
+	 * restituire una rappresentazione di un oggetto AulaDidattica con tutti i contenuti degli attributi.
+	 */
+	@Override
+	public String toString() {
+		return ("Dettagli aula: \n \t numero aula -> " + getNumeroAula() + 
+				" \n \t capienza -> "+ getCapienza() + "\n\t tipo aula -> " + getTipoAula() + "\n\t ha degli PC: " + haPc +
+				"\n\t ha delle prese elettriche: " + haPreseElettriche);
 	}
 
 }

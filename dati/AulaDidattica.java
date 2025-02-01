@@ -22,11 +22,22 @@ public class AulaDidattica extends Aula {
 	 * @param haVideoproiettore
 	 */
 	
-	public AulaDidattica(String numeroAula, int capienza, String tipoAula, boolean haLavagna, boolean haVideoproiettore) {
+	public AulaDidattica(String numeroAula, int capienza, boolean haLavagna, boolean haVideoproiettore) {
 		super(numeroAula, capienza,"Didattica");
 		this.haLavagna = haLavagna;
 		this.haVideoproiettore = haVideoproiettore;
 		
+	}
+	
+	/**
+	 * Metodo ereditato dalla classe Aula, che viene sovrascritto per 
+	 * restituire una rappresentazione di un oggetto AulaDidattica con tutti i contenuti degli attributi.
+	 */
+	@Override
+	public String toString() {
+		return ("Dettagli aula: \n \t numero aula -> " + getNumeroAula() + 
+				" \n \t capienza -> "+ getCapienza() + "\n\t tipo aula -> " + getTipoAula() + "\n\t ha una lavagna: " + haLavagna +
+				"\n\t ha un videoproiettore: " + haVideoproiettore);
 	}
 
 }

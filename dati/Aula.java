@@ -53,4 +53,14 @@ public abstract class Aula {
 		this.tipoAula = tipoAula;
 	}
 	
+	/**
+	 * Metodo della classe Object (da cui derivano tutti gli oggetti in Java), che viene sovrascritto per 
+	 * restituire una rappresentazione di un oggetto Aula con tutti i contenuti degli attributi.
+	 */
+	@Override
+	public String toString() {
+		return ("Dettagli aula: \n \t numero aula -> " + numeroAula + 
+				" \n \t capienza -> "+ capienza + "\n\t tipo aula -> " + tipoAula);
+	}
+	
 }
