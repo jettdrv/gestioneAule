@@ -6,6 +6,10 @@ import dati.*;
 /**
  * La classe {@code GestionePrenotazioni} gestisce la prenotazione delle aule seguendo i vincoli predefiniti.
  * Contiene un ArrayList per le aule che vengono caricate da file e un Arraylist con tutte le prenotazioni.
+ * Ho scelto di utilizzare un ArrayList per memorizzare le aule e le prenotazioni perche' posso aggiungere e rimuovere
+ * elementi senza problemi siccome la struttura dati non ha una dimensione fissa. Il tempo di accesso agli elementi
+ * e' lineare siccome si accedono direttamente utilizzando gli indici. L'unico contro e' la ricerca degli elementi
+ * che richiede il confronto di ciascun elemento dell'array.
  * La classe aggiunge, modifica o cancella una data prenotazione. 
  * @author jetad
  * @version 1.0
@@ -149,9 +153,9 @@ public class GestionePrenotazioni {
 	
 	
 	
-	//***********************************************************************************
-	//Metodi privati
-	//***********************************************************************************
+/***********************************************************************************
+	                              Metodi privati
+***********************************************************************************/
 	
 	
 	/**funzione di servizio che controlla se una data aula è disponibile. Funzione 

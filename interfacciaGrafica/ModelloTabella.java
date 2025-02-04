@@ -73,7 +73,7 @@ public class ModelloTabella extends AbstractTableModel{
         	
         	 for (Prenotazione p : gestionePrenotazioni.getPrenotazioni()) {
                  if ((p.getDataPrenotazione().equals(data))&&(p.getAula().equals(a)) && (p.getOraInizio() <= ora) && (p.getOraFine() > ora)) {
-                	 return ("Prenotato");
+                	 return ("Prenotato da " + p.getNomePrenotatore());
                  }
         	 }
         
