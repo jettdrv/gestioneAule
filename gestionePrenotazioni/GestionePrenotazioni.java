@@ -106,19 +106,20 @@ public class GestionePrenotazioni {
 	 * @param prenotazione
 	 */
 	
-	public void cancellaPrenotazione(Prenotazione prenotazione) {
+	public boolean cancellaPrenotazione(Prenotazione prenotazione) {
 		
 		if(!prenotazioni.contains(prenotazione)) {
-			return; //la prenotazione inserita non esiste
+			return false; //la prenotazione inserita non esiste
 		}
 		
 		if(prenotazioni.remove(prenotazione))
 			{
 				System.out.println("Prenotazione cancellata con successo ");
-				return;
+				return true;
 			}
 		else {
 			System.out.println("Cancellazione della prenotazione non effettuata ");
+			return false;
 		}
 	}
 	

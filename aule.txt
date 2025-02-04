@@ -1,2 +1,13 @@
-a1.0 50 Didattica true false
-a1.1 100 Laboratorio true true
+A1.0 50 Didattica true false
+A1.1 100 Didattica true true
+A1.2 75 Didattica true true
+A1.3 20 Didattica true false
+M1.4 10 Didattica false false
+M1.5 100 Didattica true true
+M1.6 50 Didattica true false
+M1.7 20 Didattica false true
+L1.8 70 Laboratorio true true
+L1.9 20 Laboratorio true true
+L2.0 15 Laboratorio true true
+L2.1 10 Laboratorio true true
+L2.2 10 Laboratorio false true
