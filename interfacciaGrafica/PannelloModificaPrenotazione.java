@@ -40,10 +40,10 @@ public class PannelloModificaPrenotazione extends PannelloAggiungiPrenotazione{
 
 /******************************Aggiornamento dati della prenotazione*****************************************/
 	
-		  	t1.setText(prenotazione.getNomePrenotatore());
-	        t2.setText(prenotazione.getMotivazione()); 
+		  	t1.setText(prenotazione.getNomePrenotatore().trim());
+	        t2.setText(prenotazione.getMotivazione().trim()); 
 	        
-	        testoData.setText(prenotazione.getDataPrenotazione());
+	        testoData.setText(prenotazione.getDataPrenotazione().trim());
 	        testoData.setEditable(false);
 	     
 	        c2.setSelectedItem(prenotazione.getOraInizio());

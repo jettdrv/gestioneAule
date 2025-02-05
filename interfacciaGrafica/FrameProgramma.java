@@ -22,6 +22,7 @@ import java.awt.event.ActionListener;
 import gestionePrenotazioni.*;
 import dati.*;
 import interfacciaGrafica.*;
+import caricamentoSalvataggio.*;
 
 
 /**
@@ -39,7 +40,7 @@ public class FrameProgramma extends JFrame {
 	
 	
 	private String data;
-	
+	private List <Prenotazione> prenotazioni;
 
 	private Aula aula;
 	
@@ -48,7 +49,7 @@ public class FrameProgramma extends JFrame {
 		this.gestionePrenotazioni = gestionePrenotazioni;
 		this.modello = new ModelloTabella(gestionePrenotazioni, data);
 		
-		List <Prenotazione> prenotazioni = gestionePrenotazioni.getPrenotazioni();
+		prenotazioni = gestionePrenotazioni.getPrenotazioni();
 		List<Aula> aule = gestionePrenotazioni.getAule();
 		aula = gestionePrenotazioni.getAule().get(0);
 		data = ScegliData.getData();
@@ -199,7 +200,6 @@ public class FrameProgramma extends JFrame {
 						
                 	}
                  
-                    //tabellaPrenotazioni.clearSelection();
                 } else {
                     JOptionPane.showMessageDialog(FrameProgramma.this, "Seleziona una prenotazione da cancellare.");
                 }
@@ -207,8 +207,37 @@ public class FrameProgramma extends JFrame {
         });
         
         pannelloForm.add(cancellaPrenotazione);
+/***********************Salva Prenotazioni**********************************/        
+        JPanel salvataggio = new JPanel();
         
+        JButton s1 = new JButton("Salva");
         
+       
+        s1.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+
+        		String nomeFile = JOptionPane.showInputDialog(null, "Inserisci il nome del file:", "Salvataggio", JOptionPane.PLAIN_MESSAGE);
+        	
+        		Salva salvaPrenotazioni = new Salva(gestionePrenotazioni, "src/" + nomeFile.trim() + ".txt");
+        	
+        	}
+        });
+        
+        salvataggio.add(s1);
+/***************Carica Prenotazioni****************************************/
+        JButton s2 = new JButton("Carica");
+        s2.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		Carica caricaPrenotazioni = new Carica(gestionePrenotazioni);
+        		prenotazioni = caricaPrenotazioni.getPrenotazioni();
+        	}
+        });
+        
+        salvataggio.add(s2);
+        
+/**********************************************************************************/
         JPanel dettagliAule= new JPanel();
         dettagliAule.setLayout(new GridLayout(1, 0));
         JButton vediDettagli = new JButton("Vedi dettagli");
@@ -229,6 +258,7 @@ public class FrameProgramma extends JFrame {
         dettagliAule.add(a);
         
         pannelloTabella.add(scrollPane, BorderLayout.NORTH);
+        pannelloTabella.add(salvataggio, BorderLayout.CENTER);
         pannelloTabella.add(dettagliAule, BorderLayout.SOUTH);
         
         

@@ -91,8 +91,6 @@ public class Prenotazione {
 	 */
 	@Override
 	public String toString() {
-		return ("Dettagli prenotazione:  \n\t data->" + data + "\n \t oraInizio-> "
-				+ ""+ oraInizio + "\n\t oraFine-> " +oraFine+ "\n\t NomePrenotatore-> "
-				+ nomePrenotatore+"\n\t Motivazione-> "+ motivazione + "\n\t aula-> "+ aula.getNumeroAula());
+		return (data + " " + oraInizio + " " +oraFine+ " " + nomePrenotatore+" "+ motivazione + " "+ aula.getNumeroAula());
 	}
 }

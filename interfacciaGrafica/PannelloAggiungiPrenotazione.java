@@ -74,10 +74,10 @@ public class PannelloAggiungiPrenotazione extends JFrame{
 		    l2 = new JLabel("Nome: ");
 		  
 		  
-	        t1 = new JTextField(" ");
+	        t1 = new JTextField("");
 	        
 	        l3 = new JLabel("Motivazione: ");
-	        t2 = new JTextField(" "); 
+	        t2 = new JTextField(""); 
 	        
 	        d = new JLabel("Data: ");
 	        testoData = new JTextField(data);
