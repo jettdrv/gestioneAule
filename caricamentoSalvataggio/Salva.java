@@ -13,10 +13,10 @@ import java.awt.*;
  * Questa classe si occupa del salvataggio delle prenotazioni in un file selezionato. Il nome del file viene scelto dall'utente
  * quando si clicca il bottone del salvataggio nel frame principale. A questo nome si aggiunge anche l'estensione ".txt" e 
  * viene passato al costruttore. Durante il salvataggio del progresso, e' importante tenere in mente il modo in cui
- * i dati devono essere rappresentati nel file in modo che sia pi' facile caricarli di nuovo. In questo caso
+ * i dati devono essere rappresentati nel file in modo che sia piu' facile caricarli di nuovo. In questo caso
  * ho semplicemente scelto di scorrere la lista di prenotazioni mediante un foreach e chiamare il metodo
  * {@code toString()} della classe Prenotazione. La stringa ritornata contiene ogni campo dell'oggetto Prenotazione 
- * separato da uno spazio bianco.
+ * separato da una virgola.
  * @author jetad
  *
  */
@@ -67,7 +67,7 @@ public class Salva {
 			JOptionPane.showMessageDialog(null, "Prenotazioni salvate con successo!");
 			fout.close();
 		}catch(IOException e) {
-			JOptionPane.showMessageDialog(null, "Errore durante il salvataggio: " + e.getMessage(), "Errore", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Errore durante il salvataggio" );
 
 		}
 		

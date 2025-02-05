@@ -34,7 +34,7 @@ public class ScegliData extends JDialog implements ActionListener {
 	private JComboBox<String> m;
 	private JComboBox<Integer> g;
 	
-	private JTextField s;
+	private JLabel s;
 	private ModelloTabella mo;
 
 	private String[] nomiMesi = {"Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", 
@@ -44,7 +44,7 @@ public class ScegliData extends JDialog implements ActionListener {
 	private static String data = oggi;
 	
 	
-	public ScegliData( JTextField s, ModelloTabella mo) {
+	public ScegliData( JLabel s, ModelloTabella mo) {
 		
 		setSize(400, 400);
 		setLayout(new GridLayout(0 ,1));

@@ -30,7 +30,7 @@ public class Main {
 		
 		
 		
-		CaricaAule c = new CaricaAule("src/aule.txt");
+		CaricaAule c = new CaricaAule("aule.txt");
 		c.stampaLista();
 		List <Aula> aule = c.getListaAule();
 		

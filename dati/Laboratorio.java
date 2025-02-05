@@ -1,6 +1,6 @@
 package dati;
 /**
- * La classe {@code Laboratorio} è una classe che eredita gli attributi e i metodi della classe astratta {@code Aula}.
+ * La classe {@code Laboratorio} e' una classe che eredita gli attributi e i metodi della classe astratta {@code Aula}.
  * Oltre agli attributi ereditati, contiene anche informazioni aggiuntive specifiche per questo tipo di aula come
  * la presenza di PC e la presenza delle prese elettriche.
  * @version 1.0

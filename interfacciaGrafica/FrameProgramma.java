@@ -18,6 +18,7 @@ import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 import gestionePrenotazioni.*;
 import dati.*;
@@ -60,11 +61,11 @@ public class FrameProgramma extends JFrame {
         setLocationRelativeTo(null);
         
         setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
-        
+/*********************Tabella*************************************/
+        JPanel pannelloTabella = new JPanel(new BorderLayout());
         tabellaPrenotazioni = new JTable(modello);
         tabellaPrenotazioni.setCellSelectionEnabled(true);
         tabellaPrenotazioni.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        //tabellaPrenotazioni.addColumnSelectionInterval(0, tabellaPrenotazioni.getColumnCount() -1);
         
         JScrollPane scrollPane = new JScrollPane(tabellaPrenotazioni);
         
@@ -73,22 +74,18 @@ public class FrameProgramma extends JFrame {
         
         //******************header**********************************************************************
         JPanel header = new JPanel();
-        //header.setBounds(0, 0, 1300, 60);
         header.setBackground(Color.pink.darker());
         header.setBorder(BorderFactory.createRaisedBevelBorder());
         header.setPreferredSize(new Dimension(800, 65)); 
         JLabel nomeUniversita = new JLabel("Università di Pippo");
-        nomeUniversita.setFont(new Font("Serif", Font.BOLD, 24)); // Aumenta la dimensione del font
-        nomeUniversita.setAlignmentX(Component.CENTER_ALIGNMENT); // Centra il testo orizzontalmente
-        header.add(nomeUniversita);
+        nomeUniversita.setFont(new Font("Serif", Font.BOLD, 24)); 
+        nomeUniversita.setAlignmentX(Component.CENTER_ALIGNMENT); 
         
         
         //*******************titolo********************************************************
         
         JPanel header2 = new JPanel();
-        //header2.setBounds(0, 60, 1300, 40);
         header2.setBackground(Color.pink.brighter());
-        //header2.setBorder(BorderFactory.createRaisedBevelBorder());
         JLabel titolo = new JLabel("Prenotazione aule", JLabel.LEFT);
         header2.add(titolo);
        
@@ -97,9 +94,7 @@ public class FrameProgramma extends JFrame {
         JPanel pannelloData = new JPanel();
         pannelloData.setLayout(new FlowLayout());
         
-        JTextField showData = new JTextField(data);
-        showData.isEditable();
-        showData.setEditable(false);
+        JLabel showData = new JLabel(data);
         
         JButton scegliData = new JButton("Scegli la data");
         scegliData.addActionListener(new ActionListener() {
@@ -114,40 +109,57 @@ public class FrameProgramma extends JFrame {
         
         pannelloData.add(scegliData);
         pannelloData.add(showData);
+/********************************Menu Bar**********************************************/
+        JMenuBar menuBar;
+        JMenu menu1;
+        JMenu menu2;
         
+        JMenuItem salva = new JMenuItem("Salva", KeyEvent.VK_T);
+        salva.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
+        JMenuItem carica = new JMenuItem("Carica", KeyEvent.VK_T);
+        carica.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2, ActionEvent.ALT_MASK));
         
-        //********************************contenuti programma********************
-        JPanel pannelloCentrale = new JPanel(new SpringLayout());
-        pannelloCentrale.setLayout(new BoxLayout(pannelloCentrale, BoxLayout.LINE_AXIS));
+        JMenuItem aggiungiPrenotazione = new JMenuItem("Aggiungi prenotazione", KeyEvent.VK_T);
+        aggiungiPrenotazione.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.CTRL_MASK));
+        JMenuItem modificaPrenotazione  = new JMenuItem("Modifica prenotazione ", KeyEvent.VK_T);
+        modificaPrenotazione.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2, ActionEvent.CTRL_MASK));
+        JMenuItem cancellaPrenotazione  = new JMenuItem("Cancella prenotazione", KeyEvent.VK_T);
+        cancellaPrenotazione.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_3, ActionEvent.CTRL_MASK));
         
+        menuBar = new JMenuBar();
+        menu1 = new JMenu("File");
+        menu2 = new JMenu("Edit");
+        menuBar.add(menu1);
+        menuBar.add(menu2);
+      //Primo menu per il caricamento o salvataggio delle prenotazioni  
+        salva.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+
+        		String nomeFile = JOptionPane.showInputDialog(null, "Inserisci il nome del file:", "Salvataggio", JOptionPane.PLAIN_MESSAGE);
+        	
+        		Salva salvaPrenotazioni = new Salva(gestionePrenotazioni,  nomeFile.trim() + ".txt");
+        	
+        	}
+        });
         
+        carica.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		Carica caricaPrenotazioni = new Carica(gestionePrenotazioni);
+        		prenotazioni = caricaPrenotazioni.getPrenotazioni();
+        	}
+        });
+        menu1.add(salva);
+        menu1.add(carica);
         
-        //pannello che contiene i bottoni per la gestione delle prenotazioni
-        JPanel pannelloForm = new JPanel();
-        pannelloForm.setBackground(Color.white);
-        
-        pannelloForm.setLayout(new GridLayout(0 ,1));
-        
-        //*********bottone aggiunta prenotazione*******************************
-        JButton aggiungiPrenotazione = new JButton("Aggiungi una prenotazione");
+    //secondo menu per l'aggiunta, modifica o cancellamento delle prenotazioni    
         aggiungiPrenotazione.addActionListener(new ActionListener() {
         	@Override
         	public void actionPerformed(ActionEvent e) {
         		new PannelloAggiungiPrenotazione(FrameProgramma.this, gestionePrenotazioni, modello).setVisible(true);
         	}
         });
-      
-
-        pannelloForm.add(aggiungiPrenotazione);
-        
-        
-        //*******************************************************************
-        
-        JPanel pannelloTabella = new JPanel(new BorderLayout());
-        JButton modificaPrenotazione = new JButton("Modifica una prenotazione esistente");
-        
-        
-
         modificaPrenotazione.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -173,11 +185,7 @@ public class FrameProgramma extends JFrame {
                 }
             }
         });
-
-        pannelloForm.add(modificaPrenotazione);
         
-        
-        JButton cancellaPrenotazione = new JButton("Cancella prenotazione");
         cancellaPrenotazione.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -206,41 +214,16 @@ public class FrameProgramma extends JFrame {
             }
         });
         
-        pannelloForm.add(cancellaPrenotazione);
-/***********************Salva Prenotazioni**********************************/        
-        JPanel salvataggio = new JPanel();
+        menu2.add(aggiungiPrenotazione);
+        menu2.add(modificaPrenotazione);
+        menu2.add(cancellaPrenotazione);
         
-        JButton s1 = new JButton("Salva");
         
-       
-        s1.addActionListener(new ActionListener() {
-        	@Override
-        	public void actionPerformed(ActionEvent e) {
-
-        		String nomeFile = JOptionPane.showInputDialog(null, "Inserisci il nome del file:", "Salvataggio", JOptionPane.PLAIN_MESSAGE);
-        	
-        		Salva salvaPrenotazioni = new Salva(gestionePrenotazioni, "src/" + nomeFile.trim() + ".txt");
-        	
-        	}
-        });
-        
-        salvataggio.add(s1);
-/***************Carica Prenotazioni****************************************/
-        JButton s2 = new JButton("Carica");
-        s2.addActionListener(new ActionListener() {
-        	@Override
-        	public void actionPerformed(ActionEvent e) {
-        		Carica caricaPrenotazioni = new Carica(gestionePrenotazioni);
-        		prenotazioni = caricaPrenotazioni.getPrenotazioni();
-        	}
-        });
-        
-        salvataggio.add(s2);
-        
-/**********************************************************************************/
+        this.setJMenuBar(menuBar);
+/*****************Dettagli Aule***************************************************/
         JPanel dettagliAule= new JPanel();
         dettagliAule.setLayout(new GridLayout(1, 0));
-        JButton vediDettagli = new JButton("Vedi dettagli");
+        JButton vediDettagli = new JButton("Vedi dettagli dell'aula");
         
         JTextArea a = new JTextArea(" ");
         
@@ -258,20 +241,13 @@ public class FrameProgramma extends JFrame {
         dettagliAule.add(a);
         
         pannelloTabella.add(scrollPane, BorderLayout.NORTH);
-        pannelloTabella.add(salvataggio, BorderLayout.CENTER);
         pannelloTabella.add(dettagliAule, BorderLayout.SOUTH);
-        
-        
-        pannelloCentrale.add(pannelloForm);
-        pannelloCentrale.add(pannelloTabella);
-    
-        
         
         add(header);
         add(header2);
         add(pannelloData);
         
-        add(pannelloCentrale);
+        add(pannelloTabella);
    
 	}
 	

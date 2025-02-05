@@ -91,6 +91,6 @@ public class Prenotazione {
 	 */
 	@Override
 	public String toString() {
-		return (data + " " + oraInizio + " " +oraFine+ " " + nomePrenotatore+" "+ motivazione + " "+ aula.getNumeroAula());
+		return (data + "," + oraInizio + "," +oraFine+ "," + nomePrenotatore+","+ motivazione + ","+ aula.getNumeroAula());
 	}
 }

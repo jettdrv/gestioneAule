@@ -43,7 +43,7 @@ public class Carica {
 	 * si crea un nuovo oggetto di tipo File. Se la lista di prenotazioni di p non e' vuota, bisogna svuotarlo
 	 * per salvare le nuove prenotazioni. Il BufferedReader legge una riga intera del file e lo assegna ad una 
 	 * variabile di tipo String. Questa variabile poi verra' "splittata" formando un array che contiene solo
-	 * le sottostringhe senza includere gli spazi bianchi. Ogni elemento dell'array viene assegnato al campo opportuno
+	 * le sottostringhe senza includere la virgola. Ogni elemento dell'array viene assegnato al campo opportuno
 	 * di una prenotazione. Si crea un nuovo oggetto di tipo Prenotazione e lo si appende alla lista di prenotazioni
 	 * mediante il metodo {@code add()}
 	 * 
@@ -77,7 +77,7 @@ public class Carica {
 				
 				try {
 					while((linea = b.readLine())!= null) {
-						String [] temp = linea.split(" ");
+						String [] temp = linea.split(",");
 						
 						//assegnamenti delle variabili
 						data = temp[0];

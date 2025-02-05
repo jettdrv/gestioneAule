@@ -1,6 +1,6 @@
 package dati;
 /**
- * La classe {@code AulaDidattica} è una classe che eredita gli attributi e i metodi della classe astratta {@code Aula}.
+ * La classe {@code AulaDidattica} e' una classe che eredita gli attributi e i metodi della classe astratta {@code Aula}.
  * Oltre agli attributi ereditati, contiene anche informazioni aggiuntive specifiche per questo tipo di aula come
  * la presenza di una lavagna e la presenza di un videoproiettore.
  * @version 1.0
